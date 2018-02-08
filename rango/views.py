@@ -12,7 +12,7 @@ def about(request):
      context_dict = {'boldmessage': "This is the about page"}
      return render(request, 'rango/about.html', context=context_dict)
 
-def show_Category(request, category_name_url):
+def show_Category(request, category_name_slug):
     context_dict={}
     try:
         category = Category.objects.get(slug=category_name_slug)
@@ -22,13 +22,12 @@ def show_Category(request, category_name_url):
     except Category.DoesNotExist:
         context_dict['pages']=None
         context_dict['category']=None
-
     return render(request, 'rango/category.html',context_dict)
 
-def show_page(request, page_name_url):
+def show_page(request, page_name_slug):
     context_dict={}
     try:
-        pages=Page.get(slug=page_name_slug)
+        pages=Page.objects.get(slug=page_name_slug)
         context_dict['pages']=pages
     except Page.DoesNotExist:
         context_dict['pages']=None

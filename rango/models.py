@@ -25,7 +25,7 @@ class Page(models.Model):
     slug = models.SlugField(unique =True)
 
     def save(self,*args, **kwargs):
-        self.slug = slugify(self.name)
+        self.slug = slugify(self.title)
         super(Page, self).save(*args,**kwargs)
 
     def __str__(self):
