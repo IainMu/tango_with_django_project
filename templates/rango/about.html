@@ -1,0 +1,22 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %} 
+
+{% block title_block %}
+	About
+{% endblock %}
+
+{% block body_block %}
+   <h1>About</h1>
+      <div>
+         hey there partner! <br />
+         <strong>{{ boldmessage }}</strong><br />
+      </div>
+      <div>
+	 <p>This tutorial was put together by Iain Murtagh, 2257307m</p><br />
+	 <p> Remember </p> <img src="{% static "images/cat.jpg" %}"
+            alt="Sad Cat" /> <br />
+	 <p> Happy! </p>
+	
+	
+      </div>
+{% endblock %}
