@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from rango.models import Category,Page
+from django.core.urlresolvers import reverse
+from rango.models import Category
+from rango.models import Page
 from rango.forms import CategoryForm,PageForm
 
 def index(request):
@@ -13,7 +15,7 @@ def about(request):
      context_dict = {'boldmessage': "This is the about page"}
      return render(request, 'rango/about.html', context=context_dict)
 
-def show_Category(request, category_name_slug):
+def show_category(request, category_name_slug):
     context_dict={}
     try:
         category = Category.objects.get(slug=category_name_slug)
@@ -54,7 +56,7 @@ def add_page(request,category_name_slug):
         category=None
 
     form = PageForm()
-    if request.method=="POST":
+    if request.method=='POST':
         form=PageForm(request.POST)
         if form.is_valid():
             if category:
